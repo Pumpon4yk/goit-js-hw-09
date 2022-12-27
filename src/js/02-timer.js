@@ -36,7 +36,6 @@ flatpickr('#datetime-picker', options);
 
 function onStart() {
     id = setInterval(setTime, TIME_DELAY);
-    console.log("🚀 ~ onStart ~ id", id)
     refs.startBtn.setAttribute('disabled', 'disabled');
 }
 
