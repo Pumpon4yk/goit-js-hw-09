@@ -12,6 +12,7 @@ const refs = {
 
 const TIME_DELAY = 1000;
 let timer = 0;
+let id = null
 
 refs.startBtn.addEventListener('click', onStart);
 
@@ -34,17 +35,28 @@ const options = {
 flatpickr('#datetime-picker', options);
 
 function onStart() {
-    setInterval(setTime, TIME_DELAY);
+    id = setInterval(setTime, TIME_DELAY);
+    console.log("🚀 ~ onStart ~ id", id)
     refs.startBtn.setAttribute('disabled', 'disabled');
 }
 
 function setTime(){
+
     timeRec(timer)
+    stopTime(timer)
     const { days, hours, minutes, seconds } = convertMs(timer);
     refs.days.textContent = days;
     refs.hours.textContent = hours;
     refs.minutes.textContent = minutes;
     refs.seconds.textContent = seconds;
+}
+
+
+function stopTime(params) {
+    if (params <= 1000) {
+        Notify.success('Timer STOP')
+        return clearInterval(id)
+    }
 }
 
 function timeRec(params) {
@@ -62,7 +74,7 @@ function convertMs(ms) {
     const minute = second * 60;
     const hour = minute * 60;
     const day = hour * 24;
-
+    
     // Remaining days
     const days = addLeadingZero(Math.floor(ms / day));
     // Remaining hours
