@@ -13,6 +13,7 @@ function onStart() {
     refs.startBtn.setAttribute('disabled', 'disabled');
     refs.stopBtn.removeAttribute('disabled');
     timerId = setInterval(bodyBg, 1000);
+    bodyBg()
 }
 
 function onStop() {
