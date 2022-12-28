@@ -19,6 +19,7 @@ function submitForm(e) {
             })
         d += Number(step.value)
     }
+    e.currentTarget.reset()
 }
 
 function createPromise(position, delay) {
