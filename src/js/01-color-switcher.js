@@ -10,16 +10,16 @@ refs.startBtn.addEventListener('click', onStart);
 refs.stopBtn.addEventListener('click', onStop);
 
 function onStart() {
-    refs.startBtn.setAttribute('disabled', 'disabled');
-    refs.stopBtn.removeAttribute('disabled');
+    refs.startBtn.disabled = true;
+    refs.stopBtn.disabled = false;
     timerId = setInterval(bodyBg, 1000);
     bodyBg()
 }
 
 function onStop() {
     clearInterval(timerId);
-    refs.startBtn.removeAttribute('disabled');
-    refs.stopBtn.setAttribute('disabled', 'disabled');
+    refs.startBtn.disabled = false;
+    refs.stopBtn.disabled = true;
 }
 
 function bodyBg() {
